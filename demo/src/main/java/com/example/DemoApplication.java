@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.ioc.Componente;
 import com.example.demo.ioc.Servicio;
+import com.example.infraestructure.repositories.ActorRepository;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -25,14 +26,19 @@ public class DemoApplication implements CommandLineRunner {
 	
 	@Value("${server.port}") 
 	private String port;
+	
+	@Autowired
+	private ActorRepository dao;
 
 	@Override
 	public void run(String... args) throws Exception {
-//		System.out.println("Hola mundo");
-//		cmp.setNombre("tu");
-		System.out.println(cmp.getNombre());
-		srv.getComponente().saluda();
-		System.out.println("Soy el " + port);
+////		System.out.println("Hola mundo");
+////		cmp.setNombre("tu");
+//		System.out.println(cmp.getNombre());
+//		srv.getComponente().saluda();
+//		System.out.println("Soy el " + port);
+		
+		dao.findAll().stream().forEach(System.out::println);
 	}
 
 }
