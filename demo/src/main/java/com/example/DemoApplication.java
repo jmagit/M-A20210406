@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.ioc.Componente;
 import com.example.demo.ioc.Servicio;
+import com.example.domains.contracts.ActorService;
 import com.example.domains.entities.Actor;
+import com.example.domains.entities.dtos.ActorDTO;
 import com.example.infraestructure.repositories.ActorRepository;
 import org.springframework.data.domain.Sort;
 
@@ -33,6 +35,8 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	private ActorRepository dao;
 
+	@Autowired
+	ActorService servicio;
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
@@ -55,11 +59,12 @@ public class DemoApplication implements CommandLineRunner {
 //		dao.deleteById(235);
 //		dao.findAll().stream().forEach(System.out::println);
 //		dao.findByFirstNameStartingWith("p").stream().forEach(System.out::println);
-		dao.findByFirstNameStartingWithOrderByFirstNameDesc("p").stream().forEach(System.out::println);
-		dao.getByFirstNameStartingWith("p", Sort.by("firstName").descending()).stream().forEach(System.out::println);
-//		dao.findActores(5).stream().forEach(System.out::println);
-//		dao.findById(1).get().getFilmActors().forEach(peli -> System.out.println(peli.getFilm()));
-		dao.findPelis(1).forEach(peli -> System.out.println(peli.getFilm()));
+//		dao.findByFirstNameStartingWithOrderByFirstNameDesc("p").stream().forEach(System.out::println);
+//		dao.getByFirstNameStartingWith("p", Sort.by("firstName").descending()).stream().forEach(System.out::println);
+////		dao.findActores(5).stream().forEach(System.out::println);
+////		dao.findById(1).get().getFilmActors().forEach(peli -> System.out.println(peli.getFilm()));
+//		dao.findPelis(1).forEach(peli -> System.out.println(peli.getFilm()));
+		servicio.getAll().stream().map(item -> ActorDTO.from(item)).forEach(System.out::println);
 	}
 
 }
