@@ -64,7 +64,9 @@ public class DemoApplication implements CommandLineRunner {
 ////		dao.findActores(5).stream().forEach(System.out::println);
 ////		dao.findById(1).get().getFilmActors().forEach(peli -> System.out.println(peli.getFilm()));
 //		dao.findPelis(1).forEach(peli -> System.out.println(peli.getFilm()));
-		servicio.getAll().stream().map(item -> ActorDTO.from(item)).forEach(System.out::println);
+//		servicio.getAll().stream().map(item -> ActorDTO.from(item)).forEach(System.out::println);
+		//dao.findActores(10).stream().map(item -> item.getFirstName()).forEach(System.out::println);
+		dao.findByFirstNameStartingWith("p").stream().map(item -> item.getNombre()).forEach(System.out::println);
 	}
 
 }
