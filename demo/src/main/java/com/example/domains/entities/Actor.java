@@ -2,6 +2,10 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Length;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -11,7 +15,7 @@ import java.util.List;
  * 
  */
 @Entity
-public class Actor implements Serializable {
+public class Actor extends EntityBase<Actor> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -20,9 +24,13 @@ public class Actor implements Serializable {
 	private int actorId;
 
 	@Column(name="first_name")
+	@Length(min=2, max = 45)
+	@NotBlank
 	private String firstName;
 
 	@Column(name="last_name")
+	@Length(min=2, max = 45)
+	@NotBlank
 	private String lastName;
 
 	@Column(name="last_update")

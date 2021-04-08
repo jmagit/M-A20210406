@@ -66,7 +66,29 @@ public class DemoApplication implements CommandLineRunner {
 //		dao.findPelis(1).forEach(peli -> System.out.println(peli.getFilm()));
 //		servicio.getAll().stream().map(item -> ActorDTO.from(item)).forEach(System.out::println);
 		//dao.findActores(10).stream().map(item -> item.getFirstName()).forEach(System.out::println);
-		dao.findByFirstNameStartingWith("p").stream().map(item -> item.getNombre()).forEach(System.out::println);
+//		dao.findByFirstNameStartingWith("p").stream().map(item -> item.getNombre()).forEach(System.out::println);
+		var item = new Actor(0, null, " ");
+		servicio.add(item);
+//		if(item.isInvalid()) {
+//			item.getErrors().forEach(System.out::println);
+//		}
+//		item.setFirstName("Pedroooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+//		if(item.isInvalid()) {
+//			item.getErrors().forEach(System.out::println);
+//		}
+//		item.setFirstName("Pedro");
+//		if(item.isInvalid()) {
+//			item.getErrors().forEach(System.out::println);
+//		}
+//		item.setLastName("G");
+//		if(item.isInvalid()) {
+//			item.getErrors().forEach(System.out::println);
+//		}
+//		item.setLastName("Gru");
+//		if(item.isInvalid()) {
+//			item.getErrors().forEach(System.out::println);
+//		} else 
+//			System.out.println("Valido");
 	}
 
 }
