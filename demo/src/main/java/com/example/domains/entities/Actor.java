@@ -6,6 +6,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.example.core.validations.NIF;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class Actor extends EntityBase<Actor> implements Serializable {
 	@Column(name="first_name")
 	@Length(min=2, max = 45)
 	@NotBlank
+	@NIF
 	private String firstName;
 
 	@Column(name="last_name")
