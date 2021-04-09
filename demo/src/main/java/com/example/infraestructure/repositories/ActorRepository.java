@@ -10,6 +10,8 @@ import com.example.domains.entities.FilmActor;
 import com.example.domains.entities.dtos.ActorDTO;
 import com.example.domains.entities.dtos.SoloNombre;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 public interface ActorRepository extends JpaRepository<Actor, Integer> {
@@ -21,4 +23,8 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
 	List<ActorDTO> findActores(int min);
 	@Query("select a.filmActors from Actor a where a.actorId = ?1")
 	List<FilmActor> findPelis(int id);
+	
+	<T> List<T> findByActorIdIsNotNull(Class<T> type);
+	<T> Page<T> findByActorIdIsNotNull(Class<T> type, Pageable page);
+	<T> List<T> findByActorIdIsNotNull(Class<T> type, Sort sort);
 }

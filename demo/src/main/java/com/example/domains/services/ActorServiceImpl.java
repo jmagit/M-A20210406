@@ -6,6 +6,9 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.domains.contracts.ActorService;
@@ -22,6 +25,18 @@ public class ActorServiceImpl implements ActorService {
 	public List<Actor> getAll() {
 		return dao.findAll();
 	}
+	public <T> List<T> getAll(Class<T> type) {
+		return dao.findByActorIdIsNotNull(type);
+	}
+
+	public <T> Page<T> getAll(Class<T> type, Pageable page) {
+		return dao.findByActorIdIsNotNull(type, page);
+	}
+
+	public <T> List<T> getAll(Class<T> type, Sort sort) {
+		return dao.findByActorIdIsNotNull(type, sort);
+	}
+
 	@Override
 	public Optional<Actor> getOne(int id) {
 		return dao.findById(id);

@@ -10,6 +10,8 @@ import javax.websocket.server.PathParam;
 
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +27,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.domains.contracts.ActorService;
 import com.example.domains.entities.Actor;
+import com.example.domains.entities.dtos.ActorDTO;
 import com.example.exceptions.BadRequestException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
@@ -40,22 +43,27 @@ public class ActorResource {
 	private ActorService srv;
 	
 	@GetMapping
-	public List<Actor> getAll() {
-		return srv.getAll();
+	public Page<ActorDTO> getAll(Pageable page) {
+		return srv.getAll(ActorDTO.class, page);
 	}
 
+//	@GetMapping
+//	public List<ActorDTO> getAll() {
+//		return srv.getAll(ActorDTO.class);
+//	}
+//
 	@GetMapping(path = "/{id}")
-	public Actor getOne(@PathVariable int id) throws NotFoundException {
+	public ActorDTO getOne(@PathVariable int id) throws NotFoundException {
 		Optional<Actor> item = srv.getOne(id);
 		if(item.isEmpty())
 			throw new NotFoundException();
-		return item.get();
+		return ActorDTO.from(item.get());
 	}
 	@PostMapping
-	public ResponseEntity<Object> create(@Valid @RequestBody Actor item) throws BadRequestException, InvalidDataException {
+	public ResponseEntity<ActorDTO> create(@Valid @RequestBody ActorDTO item) throws BadRequestException, InvalidDataException {
 		if(srv.getOne(item.getActorId()).isPresent())
 			throw new BadRequestException("Clave duplicada");
-		Actor newItem = srv.add(item);
+		Actor newItem = srv.add(ActorDTO.from(item));
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 			.buildAndExpand(newItem.getActorId()).toUri();
 		return ResponseEntity.created(location).build();
@@ -64,12 +72,12 @@ public class ActorResource {
 
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public void update(@PathVariable int id, @Valid @RequestBody Actor item) throws BadRequestException, NotFoundException, InvalidDataException {
+	public void update(@PathVariable int id, @Valid @RequestBody ActorDTO item) throws BadRequestException, NotFoundException, InvalidDataException {
 		if(item.getActorId() != id)
 			throw new BadRequestException("Invalid identifier");
 		if(srv.getOne(item.getActorId()).isEmpty())
 			throw new NotFoundException();
-		srv.modify(item);		
+		srv.modify(ActorDTO.from(item));		
 	}
 
 	@DeleteMapping("/{id}")
