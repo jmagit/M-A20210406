@@ -1,0 +1,76 @@
+GET http://localhost:8001/demos/params/1?nom=kk
+Accept-Language: cristiano
+Accept: text/plain
+
+###
+
+GET http://localhost:8001/demos/saluda
+Accept: application/json
+
+###
+
+GET http://localhost:8001/demos/saluda
+Accept: application/xml
+
+###
+
+GET http://localhost:8001/demos/saluda
+Accept: text/plain
+
+###
+
+POST http://localhost:8001/demos/saluda
+Accept: application/json
+Content-Type: application/json
+
+{
+  "tipo": "error",
+  "mensaje": "contenido"
+}
+###
+
+POST http://localhost:8001/demos/saluda
+Accept: application/json
+Content-Type: application/xml
+
+<Respuesta>
+  <tipo>Esto es XML</tipo>
+  <mensaje>Hola mundo</mensaje>
+</Respuesta>
+
+###
+
+GET http://localhost:8001/demos/pagina?page=50&size=40
+Accept: application/json
+
+###
+
+get http://localhost:8001/actores/1
+
+###
+
+post http://localhost:8001/actores
+Content-Type: application/json
+
+{
+  "actorId": 0,
+  "firstName": "12345678Z",
+  "lastName": "Grillo"
+}
+###
+
+get http://localhost:8001/actores/236
+Content-Type: application/json
+###
+
+put http://localhost:8001/actores/237
+Content-Type: application/json
+
+{
+  "actorId": 237,
+  "firstName": "12345678Z",
+  "lastName": "GRILLO"
+}
+###
+
+delete http://localhost:8001/actores/236

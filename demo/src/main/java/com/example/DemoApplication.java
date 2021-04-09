@@ -14,6 +14,8 @@ import com.example.domains.contracts.ActorService;
 import com.example.domains.entities.Actor;
 import com.example.domains.entities.dtos.ActorDTO;
 import com.example.infraestructure.repositories.ActorRepository;
+import com.example.resources.ActorResource;
+
 import org.springframework.data.domain.Sort;
 
 @SpringBootApplication
@@ -37,6 +39,11 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Autowired
 	ActorService servicio;
+	
+//	@Autowired
+//	ActorResource servicio;
+	
+	
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {

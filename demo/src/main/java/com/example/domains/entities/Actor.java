@@ -7,6 +7,8 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.core.validations.NIF;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -41,6 +43,7 @@ public class Actor extends EntityBase<Actor> implements Serializable {
 
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="actor")
+	@JsonIgnore
 	private List<FilmActor> filmActors;
 
 	public Actor() {
