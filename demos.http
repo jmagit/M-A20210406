@@ -45,7 +45,7 @@ Accept: application/json
 
 ###
 
-get http://localhost:8001/actores/1
+get http://localhost:8001/actores
 
 ###
 
@@ -54,8 +54,8 @@ Content-Type: application/json
 
 {
   "actorId": 0,
-  "firstName": "12345678Z",
-  "lastName": "Grillo"
+  "nombre": "12345678Z",
+  "apellidos": "Grillo"
 }
 ###
 
