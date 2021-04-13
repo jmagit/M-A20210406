@@ -16,8 +16,11 @@ import com.example.domains.entities.dtos.ActorDTO;
 import com.example.infraestructure.repositories.ActorRepository;
 import com.example.resources.ActorResource;
 
+import springfox.documentation.oas.annotations.EnableOpenApi;
+
 import org.springframework.data.domain.Sort;
 
+@EnableOpenApi
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 
