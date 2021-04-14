@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.domains.entities.dtos.ActorCatalogoDTO;
+import com.example.domains.entities.dtos.CategoriaDTO;
 import com.example.exceptions.NotFoundException;
+import com.example.proxies.CatalogoProxy;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -92,12 +94,31 @@ public class DemoResouce {
 	public String pasarela() {
 		return srvRest.getForObject("http://localhost:8010/", String.class);
 	}
+	
+	@Value
+	public static class DatosDTO {
+		private int id;
+		private String texto;
+	}
+	
 	@GetMapping(path = "/pasarela/actores") 
-	public Page<ActorCatalogoDTO> pasarelaActores() {
-		ResponseEntity<Page<ActorCatalogoDTO>> response = srvRest.exchange("http://localhost:8010/actores", HttpMethod.GET,
-				HttpEntity.EMPTY, new ParameterizedTypeReference<Page<ActorCatalogoDTO>>() {
+	public List<DatosDTO> pasarelaActores() {
+		ResponseEntity<List<DatosDTO>> response = srvRest.exchange("http://localhost:8010/actores/nombres", HttpMethod.GET,
+				HttpEntity.EMPTY, new ParameterizedTypeReference<List<DatosDTO>>() {
 				});
 		return response.getBody();
 	}
 
+	@Autowired
+	CatalogoProxy proxy;
+	
+	@GetMapping(path = "/pasarela/categorias/{id}") 
+	public CategoriaDTO pasarelaCategorias(int id) {
+		return proxy.dameUnaCategoria(id);
+	}
+	@GetMapping(path = "/pasarela/enlaces") 
+	public String pasarelaEnlaces() {
+		return proxy.dameEnlaces();
+	}
+	
 }

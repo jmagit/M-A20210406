@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -25,6 +26,7 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
 import org.springframework.data.domain.Sort;
 
 @EnableOpenApi
+@EnableFeignClients("com.example.proxies")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
