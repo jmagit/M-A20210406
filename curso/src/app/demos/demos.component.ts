@@ -18,10 +18,10 @@ export class DemosComponent implements OnInit, OnDestroy {
     { id: 3, nombre: 'albacete'},
     { id: 4, nombre: 'ciudad Real'},
   ];
-  idProvicia = 2;
+  idProvincia = 2;
 
   visible = true;
-  estectica = { importante: true, error: false, urgente: true, };
+  estetica = { importante: true, error: false, urgente: true, };
   fontSize = 24;
 
   resultado: string = null;
@@ -51,14 +51,14 @@ export class DemosComponent implements OnInit, OnDestroy {
 
   cambia() {
     this.visible = !this.visible;
-    this.estectica.importante = !this.estectica.importante;
-    this.estectica.error = !this.estectica.error;
+    this.estetica.importante = !this.estetica.importante;
+    this.estetica.error = !this.estetica.error;
   }
 
   add(provincia: string) {
     const id = this.listado.length === 0 ? 1 : (this.listado[this.listado.length - 1].id + 1);
     this.listado.push({ id,  nombre: provincia});
-    this.idProvicia = id;
+    this.idProvincia = id;
   }
 
   ngOnInit(): void {
