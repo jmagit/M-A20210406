@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
 import { DemosComponent } from './demos/demos.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
+import { FormularioComponent } from './formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
     DemosComponent,
     CalculadoraComponent,
     DinamicoComponent,
+    FormularioComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
