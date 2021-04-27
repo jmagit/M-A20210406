@@ -33,7 +33,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
   providers: [
     LoggerService,
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
-    // { provide: LOCALE_ID, useValue: 'es-ES' },
+    { provide: LOCALE_ID, useValue: 'es-ES' },
   ],
   bootstrap: [AppComponent]
 })
