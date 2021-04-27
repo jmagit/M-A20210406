@@ -18,12 +18,14 @@ registerLocaleData(localeEs, 'es', localeEsExtra);
 import { AppComponent } from './app.component';
 import { DemosComponent } from './demos/demos.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
+import { DinamicoComponent } from './dinamico/dinamico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemosComponent,
     CalculadoraComponent,
+    DinamicoComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
