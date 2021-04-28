@@ -1,11 +1,11 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/my-core';
-import { MainModule } from './main';
+import { AjaxWaitInterceptor, MainModule } from './main';
 import { CommonServicesModule } from './common-services';
 
 // Cargar idioma --------------------------------------------------------
@@ -39,6 +39,7 @@ import { FormularioComponent } from './formulario/formulario.component';
     LoggerService,
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
     { provide: LOCALE_ID, useValue: 'es-ES' },
+    { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
   ],
   bootstrap: [AppComponent]
 })
