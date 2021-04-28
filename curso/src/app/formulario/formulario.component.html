@@ -41,3 +41,11 @@
   <button type="button" (click)="nuevo()">nuevo</button>
   <button type="button" (click)="cargar()">cargar</button>
 </p>
+
+{{elemento | json}}
+
+<ul>
+  <li *ngFor="let item of listado">
+    {{item.actorId}} {{item.nombre}} {{item.apellidos}}
+  </li>
+</ul>
