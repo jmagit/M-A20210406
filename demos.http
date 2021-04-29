@@ -74,3 +74,24 @@ Content-Type: application/json
 ###
 
 delete http://localhost:8001/actores/236
+
+###
+GET http://localhost:8091/seguro
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9PVFJPIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE2MTk3MDYxNDAsImV4cCI6MTYxOTcwNjc0MH0.RDfpkNmb3245fL0rQKKrOquCLQ2SLA0cq10DPIQcFFnYN8ikItZWLDZgc3ggXnBIUEux6ACRvj9CnIE8dFvjUA
+
+###
+GET http://localhost:8091/admin
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE2MTk3MDU4NDgsImV4cCI6MTYxOTcwNjQ0OH0.aT5jUcgv3DVzVCu2V4vxmNvNfJJGE9OyB1Stt_OGOlg9EuTcXX-GGIbP6VlUydBaRNtXFeX5LwTKscmWzAYyrQ
+
+###
+POST http://localhost:8091/login
+Content-Type: application/json
+
+{ "name": "admin", "password": "kk" }
+
+###
+POST http://localhost:8091/login
+Content-Type: application/json
+
+{ "name": "kk", "password": "kk" }
+

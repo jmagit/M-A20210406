@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,13 +31,16 @@ public class UserResource {
 	private String SECRET;
 
 	@RequestMapping(path = "/login", method = { RequestMethod.GET, RequestMethod.POST })
-	public AuthToken login(@RequestParam("name") String username, @RequestParam("password") String pwd) {		
-		//Realizar proceso de autenticación		
-		return new AuthToken(true, getJWTToken(username), username);		
+	public ResponseEntity<AuthToken> login(@RequestParam("name") String username, @RequestParam("password") String pwd) {		
+		//Realizar proceso de autenticación	
+			if("falla".compareToIgnoreCase(username) == 0)
+				return ResponseEntity.notFound().build();				
+		// ---------------------------
+		return ResponseEntity.ok(new AuthToken(true, getJWTToken(username), username));		
 	}
 	
 	@PostMapping(path = "/login", consumes = "application/json")
-	public AuthToken loginPostJSON(@RequestBody BasicCredential usr) {		
+	public ResponseEntity<AuthToken> loginPostJSON(@RequestBody BasicCredential usr) {		
 		//Realizar proceso de autenticación		
 		return login(usr.getUsername(), usr.getPassword());		
 	}

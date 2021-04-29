@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NotificationComponent } from './notification/notification.component';
 import { HomeComponent } from './home/home.component';
 import { AjaxWaitComponent } from './ajax-wait';
+import { SecurityModule } from '../security';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { AjaxWaitComponent } from './ajax-wait';
     AjaxWaitComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule, SecurityModule,
   ]
 })
 export class MainModule {

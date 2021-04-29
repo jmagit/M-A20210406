@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +38,7 @@ import lombok.experimental.var;
 import org.springframework.http.HttpStatus;
 
 @RestController
-@RequestMapping("/actores")
+@RequestMapping("/api/actores")
 public class ActorResource {
 	@Autowired
 	private ActorService srv;
@@ -60,6 +61,7 @@ public class ActorResource {
 		return ActorDTO.from(item.get());
 	}
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<ActorDTO> create(@Valid @RequestBody ActorDTO item) throws BadRequestException, InvalidDataException {
 		if(srv.getOne(item.getActorId()).isPresent())
 			throw new BadRequestException("Clave duplicada");

@@ -44,7 +44,7 @@ public class DemoResouce {
 		private String tipo, mensaje;
 	}
 	
-	@GetMapping
+	@GetMapping("/raiz")
 	public String raiz() {
 		return "Raiz del sitio";
 	}

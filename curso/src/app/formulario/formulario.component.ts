@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { RESTDAOService } from '../base-code/RESTDAOService';
 import { NotificationService } from '../common-services';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ActoresDaoService extends RESTDAOService<any, number> {
   constructor(http: HttpClient) {
     super(http, 'actores');
@@ -21,7 +21,7 @@ export class FormularioComponent implements OnInit {
   listado = [];
   esNuevo = false;
 
-  constructor(private dao: ActoresDaoService, private notify: NotificationService ) { }
+  constructor(private dao: ActoresDaoService, private notify: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -40,7 +40,7 @@ export class FormularioComponent implements OnInit {
         },
         err => this.notify.add(err.message)
       );
-      this.dao.query()
+    this.dao.query()
       .subscribe(
         datos => {
           this.listado = datos.content;

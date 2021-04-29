@@ -21,6 +21,7 @@ import { DemosComponent } from './demos/demos.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { FormularioComponent } from './formulario/formulario.component';
+import { SecurityModule } from './security';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { FormularioComponent } from './formulario/formulario.component';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     MainModule, CommonServicesModule, MyCoreModule,
-    AppRoutingModule
+    AppRoutingModule, SecurityModule,
   ],
   providers: [
     LoggerService,
