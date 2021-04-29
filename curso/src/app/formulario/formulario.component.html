@@ -1,10 +1,15 @@
 <form #miForm="ngForm">
   <p>
     <label for="">Codigo:</label>
+    <ng-container *ngIf="esNuevo">
     <input type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel"
       required>
     <span class="error" [hidden] = "!id.hasError('required') || miForm.pristine">Es obligatorio. </span>
     {{id.errors | json}}
+    </ng-container>
+    <ng-container *ngIf="!esNuevo">
+      {{elemento.id}}
+    </ng-container>
     <br>
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel"

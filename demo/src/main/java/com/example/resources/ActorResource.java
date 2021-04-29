@@ -54,6 +54,7 @@ public class ActorResource {
 //	}
 //
 	@GetMapping(path = "/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ActorDTO getOne(@PathVariable int id) throws NotFoundException {
 		Optional<Actor> item = srv.getOne(id);
 		if(item.isEmpty())
@@ -61,7 +62,6 @@ public class ActorResource {
 		return ActorDTO.from(item.get());
 	}
 	@PostMapping
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<ActorDTO> create(@Valid @RequestBody ActorDTO item) throws BadRequestException, InvalidDataException {
 		if(srv.getOne(item.getActorId()).isPresent())
 			throw new BadRequestException("Clave duplicada");

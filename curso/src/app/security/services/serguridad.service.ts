@@ -78,7 +78,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (!req.withCredentials || ! this.auth.isAutenticated) {
+    if (/*!req.withCredentials ||*/ ! this.auth.isAutenticated) {
       return next.handle(req);
     }
     const authReq = req.clone(

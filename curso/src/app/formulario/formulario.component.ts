@@ -8,7 +8,7 @@ import { NotificationService } from '../common-services';
 @Injectable({ providedIn: 'root' })
 export class ActoresDaoService extends RESTDAOService<any, number> {
   constructor(http: HttpClient) {
-    super(http, 'actores');
+    super(http, 'actores' /*, { withCredentials: true } */);
   }
 }
 @Component({

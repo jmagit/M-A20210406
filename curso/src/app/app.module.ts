@@ -21,7 +21,7 @@ import { DemosComponent } from './demos/demos.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { SecurityModule } from './security';
+import { AuthInterceptor, SecurityModule } from './security';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { SecurityModule } from './security';
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
     { provide: LOCALE_ID, useValue: 'es-ES' },
     { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
-  ],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
