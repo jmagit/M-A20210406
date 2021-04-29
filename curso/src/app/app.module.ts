@@ -22,6 +22,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { AuthInterceptor, SecurityModule } from './security';
+import { ContactosModule } from './contactos';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { AuthInterceptor, SecurityModule } from './security';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     MainModule, CommonServicesModule, MyCoreModule,
-    AppRoutingModule, SecurityModule,
+    AppRoutingModule, SecurityModule, ContactosModule,
   ],
   providers: [
     LoggerService,
