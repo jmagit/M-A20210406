@@ -23,7 +23,7 @@ export class ContactosViewModelService {
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
-  protected listURL = '/contacto';
+  protected listURL = '/contactos';
 
   constructor(protected notify: NotificationService,
     protected out: LoggerService,
@@ -78,8 +78,8 @@ export class ContactosViewModelService {
   public cancel(): void {
     this.elemento = {};
     this.idOriginal = null;
-    this.list();
-    // this.router.navigateByUrl(this.listURL);
+    // this.list();
+    this.router.navigateByUrl(this.listURL);
   }
 
   public send(): void {

@@ -4,21 +4,28 @@ import { NotificationComponent } from './notification/notification.component';
 import { HomeComponent } from './home/home.component';
 import { AjaxWaitComponent } from './ajax-wait';
 import { SecurityModule } from '../security';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     NotificationComponent,
     HomeComponent,
+    HeaderComponent,
     AjaxWaitComponent,
+    PageNotFoundComponent,
   ],
   exports: [
     NotificationComponent,
     HomeComponent,
+    HeaderComponent,
     AjaxWaitComponent,
+    PageNotFoundComponent,
   ],
   imports: [
-    CommonModule, SecurityModule,
+    CommonModule, SecurityModule, RouterModule.forChild([]),
   ]
 })
 export class MainModule {

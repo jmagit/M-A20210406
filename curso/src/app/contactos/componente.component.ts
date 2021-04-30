@@ -15,6 +15,7 @@ export class ContactosComponent implements OnInit {
   }
 }
 
+/*
 @Component({
   selector: 'app-contactos-list',
   templateUrl: './tmpl-list.sin-rutas.component.html',
@@ -62,7 +63,7 @@ export class ContactosViewComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void { }
 }
 
-/*
+*/
 @Component({
   selector: 'app-contactos-list',
   templateUrl: './tmpl-list.con-rutas.component.html',
@@ -139,7 +140,7 @@ export class ContactosViewComponent implements OnInit, OnDestroy {    private ob
       this.obs$.unsubscribe();
     }
   }
-*/
+
 
 export const CONTACTOS_COMPONENTES = [
   ContactosComponent, ContactosListComponent, ContactosAddComponent,
