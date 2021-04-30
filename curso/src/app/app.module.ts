@@ -23,6 +23,7 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { AuthInterceptor, SecurityModule } from './security';
 import { ContactosModule } from './contactos';
+import { ActoresModule } from './actores';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ContactosModule } from './contactos';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     MainModule, CommonServicesModule, MyCoreModule,
-    AppRoutingModule, SecurityModule, ContactosModule,
+    AppRoutingModule, SecurityModule, ContactosModule, ActoresModule,
   ],
   providers: [
     LoggerService,

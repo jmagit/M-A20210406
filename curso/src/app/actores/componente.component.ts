@@ -1,104 +1,104 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { ContactosViewModelService } from './servicios.service';
+import { ActoresViewModelService } from './servicios.service';
 
 @Component({
   selector: 'app-componente',
   templateUrl: './tmpl-anfitrion.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosComponent implements OnInit {
-  constructor(protected vm: ContactosViewModelService) { }
-  public get VM(): ContactosViewModelService { return this.vm; }
+export class ActoresComponent implements OnInit {
+  constructor(protected vm: ActoresViewModelService) { }
+  public get VM(): ActoresViewModelService { return this.vm; }
   ngOnInit(): void {
     this.vm.list();
   }
 }
 
 @Component({
-  selector: 'app-contactos-list',
+  selector: 'app-actores-list',
   templateUrl: './tmpl-list.sin-rutas.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosListComponent implements OnInit, OnDestroy {
-  constructor(protected vm: ContactosViewModelService) { }
-  public get VM(): ContactosViewModelService { return this.vm; }
+export class ActoresListComponent implements OnInit, OnDestroy {
+  constructor(protected vm: ActoresViewModelService) { }
+  public get VM(): ActoresViewModelService { return this.vm; }
   ngOnInit(): void { }
   ngOnDestroy(): void {  }
 }
 
 @Component({
-  selector: 'app-contactos-add',
+  selector: 'app-actores-add',
   templateUrl: './tmpl-form.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosAddComponent implements OnInit {
-  constructor(protected vm: ContactosViewModelService) { }
-  public get VM(): ContactosViewModelService { return this.vm; }
+export class ActoresAddComponent implements OnInit {
+  constructor(protected vm: ActoresViewModelService) { }
+  public get VM(): ActoresViewModelService { return this.vm; }
   ngOnInit(): void { }
 }
 
 @Component({
-  selector: 'app-contactos-edit',
+  selector: 'app-actores-edit',
   templateUrl: './tmpl-form.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosEditComponent implements OnInit, OnDestroy {
-  constructor(protected vm: ContactosViewModelService) { }
-  public get VM(): ContactosViewModelService { return this.vm; }
+export class ActoresEditComponent implements OnInit, OnDestroy {
+  constructor(protected vm: ActoresViewModelService) { }
+  public get VM(): ActoresViewModelService { return this.vm; }
   ngOnInit(): void { }
   ngOnDestroy(): void { }
 }
 
 @Component({
-  selector: 'app-contactos-view',
+  selector: 'app-actores-view',
   templateUrl: './tmpl-view.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosViewComponent implements OnInit, OnDestroy {
-  constructor(protected vm: ContactosViewModelService) { }
-  public get VM(): ContactosViewModelService { return this.vm; }
+export class ActoresViewComponent implements OnInit, OnDestroy {
+  constructor(protected vm: ActoresViewModelService) { }
+  public get VM(): ActoresViewModelService { return this.vm; }
   ngOnInit(): void { }
   ngOnDestroy(): void { }
 }
 
 /*
 @Component({
-  selector: 'app-contactos-list',
+  selector: 'app-actores-list',
   templateUrl: './tmpl-list.con-rutas.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosListComponent implements OnInit {
-  constructor(protected vm: ContactosViewModelService) { }
-  public get VM(): ContactosViewModelService { return this.vm; }
+export class ActoresListComponent implements OnInit {
+  constructor(protected vm: ActoresViewModelService) { }
+  public get VM(): ActoresViewModelService { return this.vm; }
   ngOnInit(): void {
     this.vm.list();
   }
 }
 
 @Component({
-  selector: 'app-contactos-add',
+  selector: 'app-actores-add',
   templateUrl: './tmpl-form.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosAddComponent implements OnInit {
-  constructor(protected vm: ContactosViewModelService) { }
-  public get VM(): ContactosViewModelService { return this.vm; }
+export class ActoresAddComponent implements OnInit {
+  constructor(protected vm: ActoresViewModelService) { }
+  public get VM(): ActoresViewModelService { return this.vm; }
   ngOnInit(): void {
     this.VM.add();
   }
 }
 
 @Component({
-  selector: 'app-contactos-edit',
+  selector: 'app-actores-edit',
   templateUrl: './tmpl-form.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosEditComponent implements OnInit, OnDestroy {
+export class ActoresEditComponent implements OnInit, OnDestroy {
   private obs$: any;
-  constructor(protected vm: ContactosViewModelService,
+  constructor(protected vm: ActoresViewModelService,
     protected route: ActivatedRoute, protected router: Router) { }
-  public get VM(): ContactosViewModelService { return this.vm; }
+  public get VM(): ActoresViewModelService { return this.vm; }
   ngOnInit(): void {
     this.obs$ = this.route.paramMap.subscribe(
       (params: ParamMap) => {
@@ -116,14 +116,14 @@ export class ContactosEditComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'app-contactos-view',
+  selector: 'app-actores-view',
   templateUrl: './tmpl-view.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class ContactosViewComponent implements OnInit, OnDestroy {    private obs$: any;
-    constructor(protected vm: ContactosViewModelService,
+export class ActoresViewComponent implements OnInit, OnDestroy {    private obs$: any;
+    constructor(protected vm: ActoresViewModelService,
       protected route: ActivatedRoute, protected router: Router) { }
-    public get VM(): ContactosViewModelService { return this.vm; }
+    public get VM(): ActoresViewModelService { return this.vm; }
     ngOnInit(): void {
       this.obs$ = this.route.paramMap.subscribe(
         (params: ParamMap) => {
@@ -141,7 +141,7 @@ export class ContactosViewComponent implements OnInit, OnDestroy {    private ob
   }
 */
 
-export const CONTACTOS_COMPONENTES = [
-  ContactosComponent, ContactosListComponent, ContactosAddComponent,
-  ContactosEditComponent, ContactosViewComponent,
+export const ACTORES_COMPONENTES = [
+  ActoresComponent, ActoresListComponent, ActoresAddComponent,
+  ActoresEditComponent, ActoresViewComponent,
 ];
